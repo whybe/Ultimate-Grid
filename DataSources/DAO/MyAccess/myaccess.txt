@@ -1,0 +1,10 @@
+This project can be compiled on NT with _UNICODE defined.
+
+In Project | Settings | C++ | Preprocessor add the _UNICODE define.
+
+In Project | Settings | Link | Entrypoint symbol enter 'wWinMainCRTStartup'
+
+
+CUGAccessCtrl is the class derived from CUGCtrl. The data source is opened in
+CMyAccessDoc::OnOpenDocument and initialization of the grid control takes place in
+part in CMyAccessView::OnInitialUpdate and CUGAccessCtrl::OnSetup.

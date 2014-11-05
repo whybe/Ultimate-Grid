@@ -1,0 +1,46 @@
+RTL and LTR layouts and the Ultimate Grid
+-------------------------------------------------------
+
+The Ultimate Grid supports both LTR and RTL layout and it provides number of approaches to switch between the two layout modes:
+
+1. You can use SetGridLayout () function to allow the grid to set the proper layout, or
+2. you can set the "Right-to-Left reading order" style in dialog editor for the grid's place holder item,
+and the gird will pick up on this style when it is attaching, or
+3. you can set the WS_EX_LAYOUTRTL extended style to grid's parent, then the grid will addopt at creation time. or
+4. you can use the approach described in article Q250276 in MSDN combined with EnumChildWindows.
+
+When using this apprach your code will look similar to the following, this is also demonstrated in the CTestDlg.
+
+// Callback function for EnumChildWindows() API
+static BOOL CALLBACK EnumDlgChildWindows(HWND hwnd, LPARAM lParam)
+{
+	C<my class>::ToggleLayout( hwnd );
+	return TRUE;
+}
+
+void C<my class>::ToggleLayout(HWND hwnd)
+{
+	LONG lExStyles = GetWindowLong(hwnd, GWL_EXSTYLE) ;
+
+	// The following lines update the application layout to 
+	// be right-to-left or left-to-right, as appropriate.
+	lExStyles ^= WS_EX_LAYOUTRTL ; // Toggle layout.
+
+	SetWindowLong(hwnd, GWL_EXSTYLE, lExStyles);
+}
+
+void C<my class>::OnRtol() 
+{
+	// Use ANSI versions of GetWindowLong() and SetWindowLong() because 
+	// Unicode is not needed for these calls.
+	ToggleLayout( m_hWnd );
+	EnumChildWindows(m_hWnd, EnumDlgChildWindows, 0);
+
+	// Force the tab control to re-position its scroll buttons.
+	// This step is essential in order to have the grid display properly.
+	m_grid.m_CUGTab->SendMessage( WM_SIZE );
+
+	// Force the dialog and all of its components to redraw.
+	Invalidate();
+	UpdateWindow();
+}

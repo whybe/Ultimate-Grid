@@ -1,0 +1,517 @@
+<html>
+
+<head>
+
+<title>Ultimate ToolBox Change History</title>
+<style>
+BODY, P, H1, H2, H3, H4, H5, H6, LI, TD, TH, DD, DT
+{
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	font-size: 10pt;
+	color: black;
+}
+BODY
+{
+	background-color: #ffffff;
+	color: #000000;
+}
+LI,UL,OL
+{
+	list-style-image: none;
+}
+H1, H2, H3, H4, H5, TH
+{
+	font-weight: bold;
+}
+H2, H3, H4, H5
+{
+	color: #009999;
+}
+H1
+{
+	font-size: 16pt;
+	color: #007777;
+}
+H2
+{
+	font-size: 13pt;
+}
+H3
+{
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}
+H4
+{
+	font-size: 10pt;
+	margin-bottom: 2px;
+}
+H5
+{
+	font-size: 9pt;
+	margin-bottom: 2px;
+}
+H6
+{
+	color: #626262;
+	font-size: 65%;
+	font-weight: normal;
+}
+CODE
+{
+	color: #1111BB;
+	font-family: "Courier New", Courier, mono;
+	font-weight: bold;
+}</style>
+
+</head>
+
+<body lang=EN-US>
+
+<span id="intelliTXT">
+<h1><strong>Ultimate Grid Change History</strong></h1>
+<h2>Version 7.3</h2>
+<ul>
+  <li>Merged all four updates into the official source branch</li>
+  <li>Added VC2012 solutions and projects</li>
+  <li>Added VC2010 solutions and projects</li>
+  <li>Added VC2008 solutions and projects</li>
+</ul>
+<h2>Version 7.2 (Update 04)</h2>
+<h3>Added support for WM_PRINT message handling</h3>
+<p>The source file changes referenced in this update should all be annotated
+with 'v7.2 - update 04' in comments. Changes include:</p>
+<ul>
+  <li>Modifications to the various grid windows to allow handling of WM_PRINT
+    processing. Files affected:</li>
+</ul>
+<blockquote>
+  <p>UGCnrBtn.h<br>
+  UGCnrBtn.cpp<br>
+  UGGrid.cpp<br>
+  ugsidehd.h<br>
+  ugsidehd.cpp<br>
+  UGTopHdg.h<br>
+  UGTopHdg.cpp<br>
+  <br>
+  </p>
+</blockquote>
+<h2>Version 7.2 (Update 03)</h2>
+<h3>Various changes and fixes, as discussed by The Code Project 
+community</h3>
+<p>The source file changes referenced in this update should all be 
+annotated with 'v7.2 - update 03' in comments. Changes include:</p>
+<ul>
+	<li>Fix for flicker on large tooltips that can occur when tooltip window
+      encroaches on mouse position. Reported by Kuerscht. Files affected:<br>
+	<br>
+      UGCnrBtn.cpp<br>
+      UGGrid.cpp<br>
+      ugsidehd.cpp<br>
+      UGTopHdg.cpp<br>
+      &nbsp;</li>
+	<li>Fix for CUGDropListType to eliminate blank lines that can occur at the 
+	bottom of a drop list for certain combinations of font sizes and item 
+	counts. Submitted by Gerbrand. Files affected:<br>
+	<br>
+	UGDLType.cpp<br>
+&nbsp;</li>
+	<li>Enhancement to the CUGDropListType to adjust the width of the drop list 
+	to accommodate the longest string. Submitted by Allen Shiels. Files 
+	affected:<br>
+	<br>
+	UGDLType.h<br>
+	UGDLType.cpp<br>
+&nbsp;</li>
+	<li>Modification to CUGCellType to respect bottom and center alignment flags 
+	for multi-line cells. Submitted by Allen Shiels. Files affected:<br>
+	<br>
+	UGCelTyp.cpp<br>
+&nbsp;</li>
+	<li>Fix for the CUGExpandType celltype to respect user sizing of rows to 0. 
+	Reported by atillaselem. Files affected:<br>
+	<br>
+	UGCTExpand.cpp<br>
+&nbsp;</li>
+	<li>Added OnCellTypeNotify call to CUGExpandType::ExpandOrContract. Files 
+	affected:<br>
+	<br>
+	UGCTExpand.h<br>
+	UGCTExpand.cpp</li>
+</ul>
+<p>&nbsp;</p>
+<h2>Version 7.2 (Update 02)</h2>
+<h3>Changes and fixes for 64-bit compilation, as discussed by The Code Project 
+community</h3>
+<p>The major source file changes referenced in this update should all be 
+annotated with 'v7.2 - update 02' in comments. The scope of these changes is for 
+the most part concerned with issues arising from 64-bit 
+compilation.</p>
+<p>The goal of this update is to enable 64-bit compilation of the core source 
+files, while retaining backward compatibility with VC6, VS2003, and VS2005. 
+64-bit configurations were added to the VS2008 library and sample solutions for 
+testing (x64 using VS2008 cross compiler on Win32) - these added configurations 
+are not included in this download.<b>&nbsp;
+</b> </p>
+<p>Changes for update 02 include:</p>
+<ul style="list-style-image: none">
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">Changes to 
+	UG64Bit.h:<br>
+	<br>
+	Macro added for the return value for OnToolHitTest.<br>
+	Redefinition of PtrToInt.<br>
+&nbsp;</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Some methods were declared substituting LONG, DWORD, UINT, etc in place of LRESULT, WPARAM, and LPARAM 
+	and needed revision.<br>
+&nbsp;</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Several PtrToInt calls were added to UTEdit.cpp based on OXEdit.cpp 
+	(Ultimate Toolbox equivalent) - to perform explicit conversions.<br>
+&nbsp;</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Miscellaneous declarations were updated to reflect additional types added 
+	for the ODBC and OleDB APIs that were introduced in VS2003, and are now 
+	problematic in 64-bit - these are VC6 specific, switching on _MSC_VER &lt; 
+	1400.<br>
+&nbsp;</li>
+	<li>Some warnings arising in 64-bit compilation have not been suppressed since 
+	these changes have not yet been tested.<br>&nbsp;</li>
+	<li>Notes - the Db7 ODBC example in DataSources/ODBC/odbcexm2 needs changes 
+	to stdafx.h to compile in 64-bit - see stdafx.h in the companion example - 
+	DataSources/ODBC/odbcexam. The DAO datasource and examples will not be 
+	available - DAO is not supported on Win64 platforms.</li>
+</ul>
+<p>Please test. These changes are offered as an alpha of the basic modifications 
+needed to ready the code for 64-bit. Comments and suggestions are very very much 
+welcomed from those using the code in 64-bit applications. TD </p>
+<p>&nbsp;</p>
+<h2>Version 7.2 (Update 01)</h2>
+<h3>Changes and fixes as discussed by The Code Project 
+community</h3>
+<p>The major source file changes referenced in this update should all be annotated 
+with 'v7.2 - update 01' in comments.&nbsp; Changes include: </p>
+<ul style="list-style-image: none">
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Fixes for proper pen selection for the <b>
+	<font COLOR="#1111BB" face="Courier New" size="2">CUGCheckBoxType</font></b><font SIZE="3" COLOR="#008000" face="Courier New">
+	</font>celltype as suggested by Brett R. and charshep. This corrects the 
+	'disabled' look of the checkboxes. Files affected:<p>
+	UGCBType.cpp</li>
+</ul>
+<ul>
+	<li>Code added to <b><font face="Courier New" color="#1111BB">CUGTopHdg::ToolTipNeedText</font></b> and 
+	<b><font color="#1111BB" face="Courier New">CUGSideHdg::ToolTipNeedText</font></b> 
+	to ensure that multiline tooltips are available for top and side headings - 
+	reported by kassinen. Files affected:<br>
+	<br>
+	ugsidehd.cpp<br>
+	UGTopHdg.cpp<br>
+&nbsp;</li>
+	<li>Modification to <b><font face="Courier New" color="#1111BB">
+	CUGCtrl::CopySelected</font></b> to allow copy without clearing selections - 
+	Jerry Evans. Files affected:<br>
+	<br>
+	ugctrl.cpp<br>
+	<br>
+&nbsp;</li>
+	<li>Changes to <b><font face="Courier New" color="#1111BB">
+	CUGGrid::OnMouseMove</font></b> remove a while(1) loop / message pump 
+	sequence - this gets rid of unwanted CPU usage. This change should be 
+	monitored. Original code commented out - suggested by lazymiken. Files 
+	affected:<br>
+	<br>
+	UGGrid.cpp<br>
+	<br>
+&nbsp;</li>
+	<li>Change to <b><font face="Courier New" color="#1111BB">
+	CUGCell::SetFormatClass</font></b> now allows reset of format class if NULL
+	<b><font face="Courier New" color="#1111BB">CugCellFormat</font></b> class 
+	pointer passed in. Submitted by mgampi. Files affected:<br>
+	<br>
+	UGCell.cpp<br>
+	<br>
+&nbsp;</li>
+	<li>Access specifier for the first section of the <b>
+	<font face="Courier New" color="#1111BB">CUGExpandType</font></b> cell type 
+	changed from private to protected to allow derived classes access. Submitted 
+	by mhorowit. Files affected:<br>
+	<br>
+	UGCTExpand.h<br>
+	<br>
+&nbsp;</li>
+	<li>Added <b><font face="Courier New" color="#1111BB">DetachGrid</font></b> 
+	method to <b><font face="Courier New" color="#1111BB">CUGCtrl</font></b> to 
+	allow quick replacement of one grid with another on a dialog control. 
+	Submited by Timothy W. Okrey. Files affected:<br>
+	<br>
+	ugctrl.h<br>
+	ugctrl.cpp<br>
+	<br>
+&nbsp;</li>
+	<li>Change to <b><font face="Courier New" color="#1111BB">
+	CUGCTDateTimePicker::OnLClicked</font></b> and <b>
+	<font face="Courier New" color="#1111BB">OnKeyDown</font></b> to prevent 
+	showing calendar for read only cells. Submitted by mhorowit. (Note: Other 
+	celltypes could be checked regarding this behavior as well as updated 
+	drawing for disabled button). Files affected:<br>
+	<br>
+	UGCTdtp.cpp<br>
+	<br>
+&nbsp;</li>
+	<li>Change to <b><font face="Courier New" color="#1111BB">
+	CUGCtrl::GetCellIndirect</font></b> - a call to OnGetCell was using column 
+	translation inappropriately. Submitted by JohnBarnes2858. Files affected:<br>
+	<br>
+	ugctrl.cpp<br>
+	<br>
+&nbsp;</li>
+	<li>Change to <b><font color="#1111BB" face="Courier New">
+	UGXPThemes::GetThemeRect</font></b> checks for inclusion of vssym32.h to 
+	avoid redefining constant - resolves conflict for VS2008 compilation. TD. 
+	Files affected:<br>
+	<br>
+	ugxpthemes.cpp<br>
+	<br>
+&nbsp;</li>
+</ul>
+<h2><strong>Ultimate Grid 7.2</strong></h2>
+<ul style="list-style-image: none">
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	An update to the XML classes (courtesy user kvt) 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Addition of AllExamples and AllDemos projects. 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Various fix ups to the existing <code>CUGDatasource </code>based classes for 
+	Unicode and VS2005 support </li>
+</ul>
+<h2>Ultimate Grid 7.0/7.1</h2>
+<ul style="list-style-image: none">
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Full support for VC++ 2005 compilation (with 0 warnings) 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Support for XP themes 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Drop Down Grid Cell Type 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	A powerful new Grid cell type allowing you to add Master Detail 
+	functionality to the grid 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	XML Import/Export Functionality - Define the Grid layout, defaults and data 
+	using XML 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Autofit Column Cell Type - Automatically increase the row height to show the 
+	entire text string 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Improved ADO Datasource - Sorting and additional improvements have been made 
+
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Excel XP look and feel - Configure Ultimate Grid 2005 to have an Office 
+	XP-like look and feel 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Backwards compatible with Ultimate Grid 97 and Ultimate Grid 6.1. So you 
+	don't have to worry about any upgrading issues. 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Common MFC customer suggestions added - We've listened to the developers 
+	using the old version and done what you wanted 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Enhanced Numeric Support </li>
+</ul>
+<h2>Ultimate Grid 6.0</h2>
+<h4>Cell-types:</h4>
+<ul style="list-style-image: none">
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	New drop-down grid celltype, providing functionality to display another 
+	Ultimate Grid within a popup window 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	New auto-fit celltype, providing ability for cells to adjust its column and 
+	row size in order for the text to be fully displayed. 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	All celltypes were improved to respect the <code>ReadOnly </code>flag 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	All celltypes were improved to function properly with <code>BestFit </code>
+	function 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The droplist celltype will now properly display when opened with keyboard 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The multi-font celltype will now properly draw when center or right 
+	alignments are selected. 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	A <code>CUGCellType::DrawBackground</code> virtual function was added. This 
+	function takes care of drawing the background area of the cells. All 
+	standard celltypes were modified to use this function whenever required. 
+	<ul style="list-style-image: none">
+		<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+		By default the <code>DrawBackground </code>function uses the <code>
+		FillRect </code>(with a brush) function to fill-in specified rect. This 
+		change provides the grid with a better support for 256 color 
+		environments. </li>
+	</ul>
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The <code>CUGCellType::GetBestSize </code>virtual function will now be 
+	called with a size parameter initialized to current cells height and width. 
+	<ul style="list-style-image: none">
+		<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+		This information is used by cells with a bitmap to properly calculate 
+		width of the bitmap image. </li>
+	</ul>
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The <code>CUGCellType::DrawText </code>will now unselect the font object 
+	selected. </li>
+</ul>
+<h4>Data-sources:</h4>
+<ul style="list-style-image: none">
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	New XML parser class was added to provide functionality to load and save XML 
+	documents. The XML format supported is compatible with XML files used by the 
+	MS Excel XP. 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	An <code>IsOpen </code>virtual function was added to the <code>CUGDataSource
+	</code></li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Improved on the ADO datasource 
+	<ul style="list-style-image: none">
+		<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+		Implemented sorting functionality 
+		</li>
+		<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+		Implemented <code>IsOpen </code>function to check if a connection is 
+		currently open </li>
+	</ul>
+	</li>
+</ul>
+<h4>CUGCell:</h4>
+<ul style="list-style-image: none">
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Numbers are stored as numbers now 
+	<ul style="list-style-image: none">
+		<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+		For display purposes the numbers are formatted using clients local 
+		settings 
+		</li>
+		<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+		During edit the numeric value is shown without formatting 
+		</li>
+		<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+		The formatting of numbers can be disabled using <code>
+		UGCELL_DONOT_LOCALIZE </code>cells property flag. Set through <code>
+		CUGCell::SetPropertyFlags</code>. 
+		</li>
+	</ul>
+	</li>
+</ul>
+<h4>CUGCtrl:</h4>
+<ul style="list-style-image: none">
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The BestFit function will now send <code>CUGCellType::OnChangedCellWidth</code> 
+	and <code>CUGCtrl::OnColSized </code>notifications 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The <code>OnSheetSetup </code>will now allow users to setup all of the 
+	sheets properly, including side heading width. 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The <code>CUGCtrl::AdjustComponentSizes </code>and <code>CUGCtrl::Moved</code> 
+	will not redraw the grid when paint mode is disabled. The <code>
+	AdjustComponentSizes</code> will perform all sizing calculations, but will 
+	not redraw any of the grids components. 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The <code>CUGCtrl::OnPaint</code> and <code>SetPaintMode (TRUE) </code>will 
+	call <code>AdjustComponentSizes </code>instead of <code>RedrawAll </code>
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The <code>CUGCtrl::OnPaint</code> will not pre-paint the entire grid view 
+	area with a button face-color, now this function will only draw the bottom 
+	right area that is not covered by the scrollbars or any other grids 
+	component 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Added new notification <code>CUGCtrl::OnSelectionChanged</code>, which is 
+	called by the multiselect class to inform the user that selection has 
+	changed. 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Added a <code>CUGCtrl::EnableScrollOnParialCells</code> function which 
+	control how grid behaves when user drags mouse over partially visible cells 
+	(bottom or right side of the grid area), by default we will treat this area 
+	as outside of the grid and we will scroll using current ballistics settings. 
+	The benefit of this flag is that it is now possible to prevent the grid from 
+	taking any action when the mouse is over this (gray) area. 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The <code>CUGCtrl::BestFit</code> and <code>CUGCtrl::FitToWindow</code> 
+	functions are now virtual 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Added <code>CUGCtrl::AddFontIndirect </code>function that allows users to 
+	add <code>CFont </code>objects to the grids font list by passing a <code>
+	LOGFONT </code>object 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The <code>CUGCtrl::OnKillFocus </code>will now provide pointer to the new 
+	window along with the section that lost focus. </li>
+</ul>
+<h4>CUGGrid:</h4>
+<ul style="list-style-image: none">
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Added <code>TempDisableFocusRect </code>and <code>PaintDrawHintsNow </code>
+	functions to allow for even quicker redraw 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The <code>CUGGrid::OnPaint</code> determines what are the cells that should 
+	be updated (if a rect is invalidated), and redraws only the required cells 
+	plus the current cell. </li>
+</ul>
+<h4>CUGTab:</h4>
+<ul style="list-style-image: none">
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Added a <code>CUGTab::GetTabLabel </code>function to allow retrieval of a 
+	tab label string </li>
+</ul>
+<h4>Miscellaneous:</h4>
+<ul style="list-style-image: none">
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	Tooltips will now work on heading cells 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The <code>m_paintMode </code>flag is now set to <code>FALSE </code>when the 
+	grid is created, this will prevent repainting until the grid creation/setup 
+	is completed. 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The multiselect class will now report number of groups properly. 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The multiselection will now clear when user selects a block of cells 
+	(dragging, or SHIFT-click) and clicks on the last selected cell. 
+	</li>
+	<li style="list-style-image: none; font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 10pt; color: black">
+	The Ultimate Grid will properly compile now when <code>UG_ENABLE_PRINTING
+	</code>is not defined</span></li>
+</ul>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+The help files for Ultimate Toolbox, Ultimate Grid, and Ultimate TCP/IP are now distributed in a compiled htm format - this avoids some IE7 problems encountered with the previous WebHelp offering, allows for a simpler download, and better index and search capabilities.
+
+Since the downloads first became available, several users have discovered some problems on first usage, and this text is intended as a troubleshooting guide.
+
+EXPLORER:
+
+When you first open the .chm file, you may see a message such as:
+
+"Internet Explorer was unable to link to the Web page you requested. The page might be temporarily unavailable." or "This program cannot display the webpage", etc.
+
+Later versions of windows will associate zone information with files downloaded from the internet - and this zone info may be applied to the files contained within the .zip when extracted. This may block Explorer's navigation to the html topics.
+
+To solve this problem, right click on the .chm file, select Properties, and Unblock.
+
+PATH:
+
+You may also receive this message if the path to the .chm file contains a '#' character - this will require either the renaming of a directory or moving the files - the '#' sign is being interpreted by the viewer as a bookmark indicator.
+
+Lastly, a '%' sign in the path will prevent the main window from appearing, with the contents pane displaying, e.g., 'Cannot locate "mk:MSITStore:D:\This% is a test\UTCP_IP42.chm::/TCP_IP.hhc". Again, renaming or moving the file should help.
+
+INDEX:
+
+There are chm compilations distributed with each of the Ultimate Toolbox, Ultimate Grid, and Ultimate TCP/IP libraries. Of these, the Ultimate Grid (UGrid72.chm) and Ultimate TCP/IP (UTCP_IP42.chm) use external index (chi) files. If these are not available in the path along with the .chm files, you should see a message box stating 'The window name "NewWindow" passed to HH_GET_WIN_TYPE has not been specified.' To resolve, make sure the associated .chi file is available. 
+
+Thanks for your interest in The Ultimate Toolbox. If you encounter any problems with these help compilations not addressed by this text, please post a message at http://www.codeproject.com/MFC/UltimateToolbox.asp.
+
+
+
+

@@ -1,0 +1,9 @@
+Davolio,Nancy,Sales Representative,Ms.,08-Dec-48
+Fuller,Andrew,Vice President Sales,Dr.,19-Feb-52
+Leverling,Janet,Sales Representative,Ms.,30-Aug-63
+Peacock,Margaret,Sales Representative,Mrs.,19-Sep-37
+Buchanan,Steven,Sales Manager,Mr.,04-Mar-55
+Suyama,Michael,Sales Representative,Mr.,02-Jul-63
+King,Robert,Sales Representative,Mr,29-May-60
+Callahan,Laura,Inside Sales Coordinator,Ms.,09-Jan-58
+Dodsworth,Anne,Sales Representative,Ms.,27-Jan-66

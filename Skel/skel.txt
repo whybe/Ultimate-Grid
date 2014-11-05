@@ -1,0 +1,7 @@
+Ultimate Grid for MFC
+
+This directory contains a simple CUGCtrl derived class that overrides
+all notifications that can be sent by the Ultimate Grid.
+
+
+

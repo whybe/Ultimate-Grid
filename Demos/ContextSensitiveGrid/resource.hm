@@ -1,0 +1,4 @@
+// Microsoft Developer Studio generated Help ID include file.
+// Used by ContextSensitiveGrid.rc
+//
+#define HIDOK                           0x80640001    // IDD_ABOUTBOX

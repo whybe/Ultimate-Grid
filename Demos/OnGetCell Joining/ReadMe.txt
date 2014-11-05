@@ -1,0 +1,3 @@
+When the Ultimate Grid is bound to a datasource you are not be able to join cells as you normally would.  This is caused by the fact that the Ultimate Grid depends on the datasource to provide it with all of the information about each cell, including join information.  Unfortunately database bound datasources cannot store the additional information required, causing this problem.
+
+This sample demonstrates how cell joining functionality can be achieved when the grid is bound to a datasource.

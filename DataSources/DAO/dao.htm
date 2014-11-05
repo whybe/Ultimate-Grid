@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Ultimate Grid for MFC</title>
+</head>
+
+<body bgcolor="#ffffff">
+
+<p><strong>Ultimate Grid&nbsp;for MFC</strong></p>
+
+<p><font size="4"><strong>Updates to CUGDAODataSource class
+(previously CUG_DAO)</strong></font></p>
+
+<p><strong>NEW FEATURES AND ADDITIONS:</strong></p>
+
+<p><strong>Transactions :</strong></p>
+
+<p>Support for transactions, while simple to imlement with
+CUG_DAO, are now directly available. StartTransaction(),
+CancelTransaction(), and FinishTransaction() are now part of the
+base class, and CUGDAODataSource manages the calls to
+BeginTrans(), CommitTrans(), and Rollback() on the workspace
+through these overrides. This is a very handy way of providing a
+crude undo buffer. Transactions can be nested to several levels.</p>
+
+<p><strong>Ghost row appends:</strong></p>
+
+<p>If CUGDAODataSource m_bGhostRowMode is set to TRUE, an extra
+row will appear as the last record and the user can edit this row
+to add records to the recordset, assuming the recordset supports
+additions. For now, you should make the call to <font
+ face="Courier New">SetOption(UGDAO_OPT_GHOSTROWMODE,TRUE,0L);</font>
+before calling Open() or OpenSQL on the datasource.</p>
+
+<p>Maintaining the ghost row involves both the CUGDAODataSource
+and the derived control class. As records are added or deleted
+the datasource calls the control through the OnDataSourceNotify()
+function with a UGDSM_DAO_ADJUSTROWS message and the number of
+rows in param. The control (e.g. MyCug) must take action on this
+message, [ SetNumberRows(param) ].</p>
+
+<p><strong>Record based editing:</strong></p>
+
+<p>CUGDAODatasource now implements an edit buffer on a row by row
+basis. The CUGDataSource base class functions now carry forward
+the edit notifications and the OnCanMove notifications in order
+to facilitate this mode of editing. If you are adding functions
+to the DAO datasource class you should respect the
+m_bEditRowUpdatePending boolean when performing any function that
+will effect changes to the recordset or its current record
+pointer. This flag is set in OnEditStart() and cleared either in
+UpdateFromEditRow() or CancelEdit(). For example if you are
+calling a function that will add rows to the recordset and the
+flag is TRUE, you should call UpdateFromEditRow(), call
+CancelEdit(), or disallow the action. </p>
+
+<p>In the CUGDAODataSource::OnEditFinish() notification the edit
+(for the entire row) is cancelled if the cancelFlag is TRUE. This
+will be the case if ESC is pressed while editing or the user
+clicks on a section of the control other than the grid. In the
+OnCanMove or OnEditContinue notification the UpdateFromEditRow()
+function is called if the edit is active and the user won't be
+allowed to leave the row until either this update succeeds or the
+edit is cancelled.</p>
+
+<p>Note that a programmatic call to SetCell() will still update
+the recordset directly unless the edit row is active and
+coincides with the row in the call to SetCell.</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Find and Sort:</strong></p>
+
+<p>The FindNext and SortBy CUGDataSource overrides have been
+added to allow CUGDAODataSource based grids to call SortBy and
+FindDialog.</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Support for Unicode:</strong></p>
+
+<p>The ugdao.cpp and ugdao.h are enabled for _UNICODE builds. </p>
+
+<p><strong></strong>&nbsp;</p>
+
+<p><strong>Error reporting: </strong></p>
+
+<p>TRACE statements have been added to almost all CDAOException
+exception handlers in CUGCDAODataSource, which will send
+information about the error gleaned from the exception object as
+well as a line number to the output window. Also, you can #define
+UG_DAO_REPORTERROR to enable the DAO error to appear in a message
+box for both debug and release builds.</p>
+
+<p>&nbsp;</p>
+
+<p><strong>FIXES:</strong></p>
+
+<p><strong>Deleted records:</strong></p>
+
+<p>GetCell() now recognizes that it is trying to retrieve values
+from a record that has been deleted by another user, and sets the
+cell text to #Deleted#. (This assumes the recordset is opened as
+dbOpenTable or dbOpenDynaset.) </p>
+
+<p><strong>Memory leak:</strong></p>
+
+<p>It was possible for unhandled exceptions thrown during calls
+to COleVariant::ChangeType() to leak memory. This is now fixed.</p>
+
+<p>&nbsp;</p>
+</body>
+</html>

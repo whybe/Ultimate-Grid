@@ -1,0 +1,30 @@
+*** Linking to Ultimate Grid built into a DLL ***
+
+When linking to the Ultimate Grid (that is built as a DLL) define _LINK_TO_UG_IN_EXTDLL
+in your project and specify the path for the UG header files and the location of the compiled library.
+
+The "BuildDLL" project can generate 4 variations of the Ultimate Grid DLL:
+
+ - UGMFCD.dll (UGMFCD.lib)      - Ansi Debug
+ - UGMFC.dll (UGMFC.lib)        - Ansi Release
+ - UGMFCDU.dll (UGMFCDU.lib)    - UNICODE Debug
+ - UGMFCU.dll (UGMFCU.lib)      - UNICODE Release
+
+To simplify selection of the file you should be linking to we have created a simple routine, which is demonstrated in:
+
+        "<UG install folder>\Examples\Use UG DLL\StdAfx.h"
+
+*** Building Ultimate Grid into a DLL ***
+
+The Ultimate Grid 6.1 has a new define (_BUILD_UG_INTO_EXTDLL), and once defined will mark for export
+all of the UG classes, including additional celltypes and edit controls.  To simplify this process we have introduced
+"BuildDLL" project that will build a UG DLL including all additional celltypes and edit controls.
+
+*** MFC OLE ***
+
+It is very important to understand the importance of MFC OLE and Ultimate Grid.  The Ultimate Grid will conditionally
+compile-in code if MFC OLE has been included in the project.  As result both projects (the one that builds DLL and
+the one that uses it) have to be synchronized.  You either include MFC OLE in both or in none.
+
+If you decided to exclude MFC OLE in you application you must remove both "afxole.h" and "afxodlgs.h" from the
+"StdAfx.h" in  the "Build DLL" project, then recompile DLLs.  Both of these files will result in inclusion of "afxole.h".
